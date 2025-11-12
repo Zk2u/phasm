@@ -5,6 +5,7 @@ edition = "2024"
 authors = ["Azz <zk2u@pm.me>"]
 description = "Phallible Async State Machines"
 repository = "https://github.com/zk2u/phasm"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 
