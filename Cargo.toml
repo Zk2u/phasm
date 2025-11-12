@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 authors = ["Azz <zk2u@pm.me>"]
 description = "Phallible Async State Machines"
+repository = "https://github.com/zk2u/phasm"
 
 [dependencies]
 
