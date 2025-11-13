@@ -1,0 +1,13 @@
+[package]
+name = "dentist_booking"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+phasm = { path = ".." }
+ahash = "0.8"
+
+[dev-dependencies]
+monoio = { version = "0.2", features = ["macros"] }
+rand = "0.8"
+rand_chacha = "0.3"

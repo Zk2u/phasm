@@ -15,6 +15,12 @@ pub struct TrackedAction<Types: TrackedActionTypes> {
     action: Types::Action,
 }
 
+impl<Types: TrackedActionTypes> TrackedAction<Types> {
+    pub fn new(action_id: Types::Id, action: Types::Action) -> Self {
+        Self { action_id, action }
+    }
+}
+
 #[derive(Debug, PartialEq, Eq)]
 pub enum Action<UA, TATypes: TrackedActionTypes> {
     Tracked(TrackedAction<TATypes>),

@@ -13,13 +13,16 @@ use phasm::{
 async fn main() {
     let mut csm = CounterStateMachine { counter: 0 };
     let mut actions = Vec::new();
+
     CounterStateMachine::stf(&mut csm, Input::Normal(()), &mut actions)
         .await
         .unwrap();
+
     assert_eq!(
         actions,
         vec![Action::Untracked(CsmAction::Incremented { from: 0, to: 1 })]
     );
+
     for action in actions.iter() {
         match action {
             Action::Tracked(_) => unreachable!(),
@@ -30,11 +33,12 @@ async fn main() {
             },
         }
     }
+
     actions.clear();
 }
 
 struct CounterStateMachine {
-    counter: u64, 
+    counter: u64,
 }
 
 #[derive(Debug)]
@@ -69,7 +73,7 @@ impl StateMachine for CounterStateMachine {
     type RestoreError = ();
 
     type StfFuture<'state, 'actions> = CsmStfFuture<'state, 'actions>;
-    type RestoreFuture<'state, 'actions> = future::Ready<Result<Self::Actions, Self::RestoreError>>;
+    type RestoreFuture<'state, 'actions> = future::Ready<Result<(), Self::RestoreError>>;
 
     fn stf<'state, 'actions>(
         state: &'state mut Self::State,
@@ -83,7 +87,7 @@ impl StateMachine for CounterStateMachine {
         _state: &'state Self::State,
         _actions: &'actions mut Self::Actions,
     ) -> Self::RestoreFuture<'state, 'actions> {
-        future::ready(Ok(vec![]))
+        future::ready(Ok(()))
     }
 }
 

@@ -1,6 +1,6 @@
 [package]
 name = "phasm"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 authors = ["Azz <zk2u@pm.me>"]
 description = "Phallible Async State Machines"
@@ -11,3 +11,7 @@ license = "MIT OR Apache-2.0"
 
 [dev-dependencies]
 monoio = "0.2.4"
+
+[workspace]
+resolver = "3"
+members = ["dentist_booking"]
